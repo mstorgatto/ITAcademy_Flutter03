@@ -25,9 +25,15 @@ class _listaContatosState extends State<listaContatos> {
         itemBuilder: (context, indice){
           return Card(
             child: ListTile(
-              leading: Icon(Icons.person),
+              leading: (meusContatos[indice].colorado)?Icon(Icons.star):Icon(Icons.arrow_drop_down_outlined),
               title: Text("Nome: ${meusContatos[indice].nome}"),
               subtitle: Text("Fone: ${meusContatos[indice].telefone}"),
+              trailing: FloatingActionButton(
+                child: Icon(Icons.delete_forever),
+                onPressed: ()=> setState(()=>meusContatos.removeAt(indice)),
+                heroTag:null,
+              ),
+              onTap: ()=> Navigator.pushNamed(context, "/detalhesDoContato", arguments: meusContatos[indice]),
             ),
           );
         }

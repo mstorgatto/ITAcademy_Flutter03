@@ -10,6 +10,7 @@ class adicionaContato extends StatefulWidget {
 
 class _adicionaContatoState extends State<adicionaContato> {
   late String nome, idade, telefone, email;
+  late bool colorado=true;
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +46,24 @@ class _adicionaContatoState extends State<adicionaContato> {
             ),
             onChanged: (value) => email=value,
           ),
+          Row(
+            children: [
+              Text ("É colorado? "),
+              Checkbox(
+                value: true,
+                onChanged: (value) => setState(() => colorado = value!),
+              ),
+            ],
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: (){
-          contato contatoAdicionado = contato(nome, int.parse(idade), telefone, email);
+          contato contatoAdicionado = contato(nome, int.parse(idade), telefone, email, colorado);
           Navigator.pop(context, contatoAdicionado);
         }),
+
       );
   }
 }

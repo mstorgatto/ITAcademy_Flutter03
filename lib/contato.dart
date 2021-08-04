@@ -3,5 +3,6 @@ class contato{
   int idade;
   String telefone;
   String email;
-  contato(this.nome, this.idade, this.telefone, this.email); //construtor
+  bool colorado;
+  contato(this.nome, this.idade, this.telefone, this.email, [this.colorado=true]); //construtor []=opcional
 }
