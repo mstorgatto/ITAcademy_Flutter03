@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter03_listadecontatos/adicionaContato.dart';
 import 'contato.dart';
 
 class listaContatos extends StatefulWidget {
@@ -35,7 +36,12 @@ class _listaContatosState extends State<listaContatos> {
 
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_circle),
-        onPressed: ()=>setState(()=>meusContatos.add(contato("Edson",44,"99999999","edson.moreno@pucrs.br"))),
+        onPressed: () async{
+          contato novoContato = await Navigator.push(context, MaterialPageRoute(builder: (_)=> adicionaContato()));
+          if(novoContato!=null){
+            setState(()=> meusContatos.add(novoContato));
+          }
+        }
       ),
     );
   }
